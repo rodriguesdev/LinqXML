@@ -28,13 +28,13 @@ namespace LinqXML
                                           }
                                       }).ToList();
 
-            foreach(Contato contato in contatos)
+            foreach (Contato contato in contatos)
             {
                 Console.WriteLine("{0}", contato.Nome);
 
                 Endereco endereco = contato.Endereco;
-                Console.WriteLine("{0}",endereco.Logradouro);
-                Console.WriteLine("Bairro {0}",endereco.Bairro);
+                Console.WriteLine("{0}", endereco.Logradouro);
+                Console.WriteLine("Bairro {0}", endereco.Bairro);
                 Console.WriteLine("Cidade {0}", endereco.Cidade);
                 Console.WriteLine("Estado {0}", endereco.Estado);
                 Console.WriteLine("CEP {0}", endereco.CEP);
@@ -233,6 +233,72 @@ namespace LinqXML
 
             contatos.Save(@"C:\Users\leandro\Documents\GitHub\LinqXML\Contatos2.xml");
             Console.WriteLine(@"C: \Users\leandro\Documents\GitHub\LinqXML\Contatos2.xml");
+        }
+
+        static List<Contato> CriarContatos()
+        {
+            List<Contato> contatos = new List<Contato>();
+
+            contatos.Add(
+                new Contato()
+                {
+                    Nome = "Felipe Mourato",
+                    Endereco = new Endereco()
+                    {
+                        Logradouro = "R: ABC, 1234",
+                        Bairro = "Bairro AAA",
+                        Cidade = "São Paulo",
+                        Estado = "SP",
+                        CEP = "02020-020"
+                    }
+                }
+                );
+
+            contatos.Add(
+                new Contato()
+                {
+                    Nome = "Mauricio Mourato",
+                    Endereco = new Endereco()
+                    {
+                        Logradouro = "R: GHF, 0893",
+                        Bairro = "Bairro CCC",
+                        Cidade = "São Paulo",
+                        Estado = "SP",
+                        CEP = "04040-040"
+                    }
+                }
+                );
+
+            contatos.Add(
+                new Contato()
+                {
+                    Nome = "Suzan Rodrigues",
+                    Endereco = new Endereco()
+                    {
+                        Logradouro = "R: DEF, 567",
+                        Bairro = "Bairro BBB",
+                        Cidade = "Betin",
+                        Estado = "MG",
+                        CEP = "03030-030"
+                    }
+                }
+                );
+
+            contatos.Add(
+                new Contato()
+                {
+                    Nome = "Claudia Rodrigues",
+                    Endereco = new Endereco()
+                    {
+                        Logradouro = "R: JKL, 890",
+                        Bairro = "Bairro DDD",
+                        Cidade = "Rio de Janeiro",
+                        Estado = "RJ",
+                        CEP = "06060-060"
+                    }
+                }
+                );
+            return contatos;
         }
     }
 }
