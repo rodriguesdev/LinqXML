@@ -14,33 +14,59 @@ namespace LinqXML
         {
             XDocument doc = XDocument.Load(@"C:\Users\leandro.lacr\Documents\GitHub\LinqXML\Contatos2.xml");
 
-            IEnumerable<XElement> contatos = from c in doc.Descendants("contato")
-                                             where c.Element("Endereco").Element("Bairro").Value == "Bairro XXX"
-                                             select c;
+            List<Contato> contatos = (from c in doc.Descendants("Contato")
+                                      select new Contato
+                                      {
+                                          Nome = c.Element("Nome").Value,
+                                          Endereco = new Endereco()
+                                          {
+                                              Logradouro = c.Element("Endereco").Element("Logradouro").Value,
+                                              Bairro = c.Element("Endereco").Element("Bairro").Value,
+                                              Cidade = c.Element("Endereco").Element("Cidade").Value,
+                                              Estado = c.Element("Endereco").Element("Estado").Value,
+                                              CEP = c.Element("Endereco").Element("CEP").Value
+                                          }
+                                      }).ToList();
 
-            foreach(XElement contato in contatos)
+            foreach(Contato contato in contatos)
             {
-                Console.WriteLine("{0}", contato.Element("Nome").Value);
+                Console.WriteLine("{0}", contato.Nome);
 
-                Console.WriteLine("\nTelefones:");
-
-                XElement telefones = contato.Element("Telefones");
-                foreach(XElement telefone in telefones.Elements("Telefone"))
-                {
-                    string tipo = telefone.Attribute("Tipo").Value;
-                    string numero = telefone.Attribute("Telefone").Value;
-
-                    Console.WriteLine("{0}: {1}", tipo, numero);
-                }
-
-                Console.WriteLine("\nEndereço:");
-                XElement endereco = contato.Element("Endereco");
-                Console.WriteLine("{0}", endereco.Element("Logradouro").Value);
-                Console.WriteLine("Bairro: {0}", endereco.Element("Bairro").Value);
-                Console.WriteLine("Cidade: {0}", endereco.Element("Cidade").Value);
-                Console.WriteLine("Estado: {0}", endereco.Element("EStado").Value);
-                Console.WriteLine("CEP: {0}", endereco.Element("CEP").Value);
+                Endereco endereco = contato.Endereco;
+                Console.WriteLine("{0}",endereco.Logradouro);
+                Console.WriteLine("Bairro {0}",endereco.Bairro);
+                Console.WriteLine("Cidade {0}", endereco.Cidade);
+                Console.WriteLine("Estado {0}", endereco.Estado);
+                Console.WriteLine("CEP {0}", endereco.CEP);
+                Console.WriteLine();
             }
+            //IEnumerable<XElement> contatos = from c in doc.Descendants("Contato")
+            //                                 where c.Element("Endereco").Element("Bairro").Value == "Bairro XXX"
+            //                                 select c;
+
+            //foreach(XElement contato in contatos)
+            //{
+            //    Console.WriteLine("{0}", contato.Element("Nome").Value);
+
+            //    Console.WriteLine("\nTelefones:");
+
+            //    XElement telefones = contato.Element("Telefones");
+            //    foreach(XElement telefone in telefones.Elements("Telefone"))
+            //    {
+            //        string tipo = telefone.Attribute("Tipo").Value;
+            //        string numero = telefone.Value;
+
+            //        Console.WriteLine("{0}: {1}", tipo, numero);
+            //    }
+
+            //    Console.WriteLine("\nEndereço:");
+            //    XElement endereco = contato.Element("Endereco");
+            //    Console.WriteLine("{0}", endereco.Element("Logradouro").Value);
+            //    Console.WriteLine("Bairro: {0}", endereco.Element("Bairro").Value);
+            //    Console.WriteLine("Cidade: {0}", endereco.Element("Cidade").Value);
+            //    Console.WriteLine("Estado: {0}", endereco.Element("Estado").Value);
+            //    Console.WriteLine("CEP: {0}", endereco.Element("CEP").Value);
+            //}
 
             Console.ReadKey();
         }
