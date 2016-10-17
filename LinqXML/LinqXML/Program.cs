@@ -12,7 +12,7 @@ namespace LinqXML
     {
         static void Main(string[] args)
         {
-            XDocument doc = XDocument.Load(@"C:\Users\leandro.lacr\Documents\GitHub\LinqXML\Contatos2.xml");
+            XDocument doc = XDocument.Load(@"C:\Users\leandro\Documents\GitHub\LinqXML\Contatos2.xml");
 
             List<Contato> contatos = (from c in doc.Descendants("Contato")
                                       select new Contato
@@ -231,8 +231,8 @@ namespace LinqXML
                     )
                 );
 
-            contatos.Save(@"C:\Users\leandro.lacr\Documents\GitHub\LinqXML\Contatos2.xml");
-            Console.WriteLine(@"C: \Users\leandro.lacr\Documents\GitHub\LinqXML\Contatos2.xml");
+            contatos.Save(@"C:\Users\leandro\Documents\GitHub\LinqXML\Contatos2.xml");
+            Console.WriteLine(@"C: \Users\leandro\Documents\GitHub\LinqXML\Contatos2.xml");
         }
     }
 }
