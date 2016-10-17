@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Contatos>
+  <Contato>
+    <Nome>Thiago Mônaco</Nome>
+    <Telefones>
+      <Telefone Tipo="Celular">(11) 9999-9999</Telefone>
+      <Telefone Tipo="Residencial">(11) 5555-5555</Telefone>
+    </Telefones>
+    <Endereco>
+      <Logradouro>R: Xpto, 1234</Logradouro>
+      <Bairro>Bairro XXX</Bairro>
+      <Cidade>São Paulo</Cidade>
+      <Estado>SP</Estado>
+      <CEP>01010-010</CEP>
+    </Endereco>
+  </Contato>
+  <Contato>
+    <Nome>Paulo Pedro</Nome>
+    <Telefones>
+      <Telefone Tipo="Celular">(11) 8888-8888</Telefone>
+      <Telefone Tipo="Residencial">(11) 4444-4444</Telefone>
+    </Telefones>
+    <Endereco>
+      <Logradouro>R: ABC, 1234</Logradouro>
+      <Bairro>Bairro AAA</Bairro>
+      <Cidade>São Paulo</Cidade>
+      <Estado>SP</Estado>
+      <CEP>02020-020</CEP>
+    </Endereco>
+  </Contato>
+</Contatos>
