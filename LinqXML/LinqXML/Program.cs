@@ -12,61 +12,22 @@ namespace LinqXML
     {
         static void Main(string[] args)
         {
-            XDocument doc = XDocument.Load(@"C:\Users\leandro\Documents\GitHub\LinqXML\Contatos2.xml");
+            List<Contato> contatos = CriarContatos();
 
-            List<Contato> contatos = (from c in doc.Descendants("Contato")
-                                      select new Contato
-                                      {
-                                          Nome = c.Element("Nome").Value,
-                                          Endereco = new Endereco()
-                                          {
-                                              Logradouro = c.Element("Endereco").Element("Logradouro").Value,
-                                              Bairro = c.Element("Endereco").Element("Bairro").Value,
-                                              Cidade = c.Element("Endereco").Element("Cidade").Value,
-                                              Estado = c.Element("Endereco").Element("Estado").Value,
-                                              CEP = c.Element("Endereco").Element("CEP").Value
-                                          }
-                                      }).ToList();
+            XElement xmlContatos = new XElement("Contatos",
+                from c in contatos
+                select new XElement("Contato",
+                new XElement("Nome",c.Nome),
+                new XElement("Endereco",
+                new XElement("Logradouro",c.Endereco.Logradouro),
+                new XElement("Bairro",c.Endereco.Bairro),
+                new XElement("Cidade",c.Endereco.Cidade),
+                new XElement("Estado",c.Endereco.Estado),
+                new XElement("CEP",c.Endereco.CEP))
+                ));
 
-            foreach (Contato contato in contatos)
-            {
-                Console.WriteLine("{0}", contato.Nome);
-
-                Endereco endereco = contato.Endereco;
-                Console.WriteLine("{0}", endereco.Logradouro);
-                Console.WriteLine("Bairro {0}", endereco.Bairro);
-                Console.WriteLine("Cidade {0}", endereco.Cidade);
-                Console.WriteLine("Estado {0}", endereco.Estado);
-                Console.WriteLine("CEP {0}", endereco.CEP);
-                Console.WriteLine();
-            }
-            //IEnumerable<XElement> contatos = from c in doc.Descendants("Contato")
-            //                                 where c.Element("Endereco").Element("Bairro").Value == "Bairro XXX"
-            //                                 select c;
-
-            //foreach(XElement contato in contatos)
-            //{
-            //    Console.WriteLine("{0}", contato.Element("Nome").Value);
-
-            //    Console.WriteLine("\nTelefones:");
-
-            //    XElement telefones = contato.Element("Telefones");
-            //    foreach(XElement telefone in telefones.Elements("Telefone"))
-            //    {
-            //        string tipo = telefone.Attribute("Tipo").Value;
-            //        string numero = telefone.Value;
-
-            //        Console.WriteLine("{0}: {1}", tipo, numero);
-            //    }
-
-            //    Console.WriteLine("\nEndereço:");
-            //    XElement endereco = contato.Element("Endereco");
-            //    Console.WriteLine("{0}", endereco.Element("Logradouro").Value);
-            //    Console.WriteLine("Bairro: {0}", endereco.Element("Bairro").Value);
-            //    Console.WriteLine("Cidade: {0}", endereco.Element("Cidade").Value);
-            //    Console.WriteLine("Estado: {0}", endereco.Element("Estado").Value);
-            //    Console.WriteLine("CEP: {0}", endereco.Element("CEP").Value);
-            //}
+            xmlContatos.Save(@"C:\Users\leandro\Documents\GitHub\LinqXML\Contatos3.xml");
+            Console.WriteLine(@" Criando o arquivo XML com DOM em C:\Users\leandro\Documents\GitHub\LinqXML\Contatos3.xml");
 
             Console.ReadKey();
         }

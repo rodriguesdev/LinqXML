@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Contatos>
+  <Contato>
+    <Nome>Felipe Mourato</Nome>
+    <Endereco>
+      <Logradouro>R: ABC, 1234</Logradouro>
+      <Bairro>Bairro AAA</Bairro>
+      <Cidade>São Paulo</Cidade>
+      <Estado>SP</Estado>
+      <CEP>02020-020</CEP>
+    </Endereco>
+  </Contato>
+  <Contato>
+    <Nome>Mauricio Mourato</Nome>
+    <Endereco>
+      <Logradouro>R: GHF, 0893</Logradouro>
+      <Bairro>Bairro CCC</Bairro>
+      <Cidade>São Paulo</Cidade>
+      <Estado>SP</Estado>
+      <CEP>04040-040</CEP>
+    </Endereco>
+  </Contato>
+  <Contato>
+    <Nome>Suzan Rodrigues</Nome>
+    <Endereco>
+      <Logradouro>R: DEF, 567</Logradouro>
+      <Bairro>Bairro BBB</Bairro>
+      <Cidade>Betin</Cidade>
+      <Estado>MG</Estado>
+      <CEP>03030-030</CEP>
+    </Endereco>
+  </Contato>
+  <Contato>
+    <Nome>Claudia Rodrigues</Nome>
+    <Endereco>
+      <Logradouro>R: JKL, 890</Logradouro>
+      <Bairro>Bairro DDD</Bairro>
+      <Cidade>Rio de Janeiro</Cidade>
+      <Estado>RJ</Estado>
+      <CEP>06060-060</CEP>
+    </Endereco>
+  </Contato>
+</Contatos>
